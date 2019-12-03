@@ -203,7 +203,7 @@ int QMaxKV::checkPivot(val value, double psi){
 
 
 
-
+/*
 val QMaxKV::findKthLargestAndPivot() {
 	int left = 0, right = _actualsizeMinusOne;
 	while (left <= right) {
@@ -218,11 +218,11 @@ val QMaxKV::findKthLargestAndPivot() {
 			left = new_pivot_idx + 1;
 		}
 	}
-}
+}*/
 
 
 
-/*
+
 
 val QMaxKV::findKthLargestAndPivot() {
     double delta = 1.0-0.999;
@@ -283,4 +283,4 @@ val QMaxKV::findKthLargestAndPivot() {
 		}
 	}
 	
-}*/
+}

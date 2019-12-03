@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iostream>
+#include <random>
 
 class QMax
 {
@@ -15,6 +16,7 @@ class QMax
 	float _gamma;
 	int _nminusq;
 	int _phi;
+    std::default_random_engine _generator;
 	void maintenance();
 	int PartitionAroundPivot(int left, int right, int pivot_idx, int* nums);
 public:
@@ -22,8 +24,11 @@ public:
 	int findKthLargestAndPivot();
 	QMax(int q, float gamma);
 	void insert(int id);
+    int GenerateRandom(int min,int max);
 	int* largestQ();
 	void print();
+    int checkPivot(int value, double psi);
+    int findValueIndex(int valuex);
 };
 #endif
 

@@ -41,7 +41,9 @@ class QMaxPBAKV
 	weight z_star;
 	void maintenance();
 	inline void swap(int a, int b);
+    inline void swap1(int a, int b, val* num);
 	int PartitionAroundPivot(int left, int right, int pivot_idx, val* nums);
+    int PartitionAroundPivot1(int left, int right, int pivot_idx, val* nums);
 public:
 	weight findKthLargestAndPivot();
 	QMaxPBAKV(int q, float gamma);
@@ -49,6 +51,9 @@ public:
 	void insert(key k, weight x, double u);
 	outputkv largestQ();
 	bool in(key k);
+    int findValueIndex(val value);
+    int checkPivot(val value, double psi);
+    int GenerateRandom(int min,int max);
 };
 
 #endif

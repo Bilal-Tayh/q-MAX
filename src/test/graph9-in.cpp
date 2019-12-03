@@ -252,21 +252,21 @@ int main() {
   datasets.push_back("univ1");
   cout << "read UNIV1" << endl;
   
-  ofstream caida16stream;
-  setupOutputFile("../results/pba_caida.raw_res", caida16stream, false);
-  streams.push_back(&caida16stream);
-  getKeysAndWeightsFromFile("../datasets/CAIDA16/mergedAggregatedPktlen_Srcip", keys, ws, CAIDA16_SIZE);
-  sizes.push_back(CAIDA16_SIZE);
-  datasets.push_back("caida");
-  cout << "read CAIDA16" << endl;
-  
-  ofstream caida18stream;
-  setupOutputFile("../results/pba_caida18.raw_res", caida18stream, false);
-  streams.push_back(&caida18stream);
-  getKeysAndWeightsFromFile("../datasets/CAIDA18/mergedAggregatedPktlen_Srcip", keys, ws, CAIDA18_SIZE);
-  sizes.push_back(CAIDA18_SIZE);
-  datasets.push_back("caida18");
-  cout << "read CAIDA18" << endl;
+//   ofstream caida16stream;
+//   setupOutputFile("../results/pba_caida.raw_res", caida16stream, false);
+//   streams.push_back(&caida16stream);
+//   getKeysAndWeightsFromFile("../datasets/CAIDA16/mergedAggregatedPktlen_Srcip", keys, ws, CAIDA16_SIZE);
+//   sizes.push_back(CAIDA16_SIZE);
+//   datasets.push_back("caida");
+//   cout << "read CAIDA16" << endl;
+//   
+//   ofstream caida18stream;
+//   setupOutputFile("../results/pba_caida18.raw_res", caida18stream, false);
+//   streams.push_back(&caida18stream);
+//   getKeysAndWeightsFromFile("../datasets/CAIDA18/mergedAggregatedPktlen_Srcip", keys, ws, CAIDA18_SIZE);
+//   sizes.push_back(CAIDA18_SIZE);
+//   datasets.push_back("caida18");
+//   cout << "read CAIDA18" << endl;
   
   list<unsigned int> qs = {1000000, 10000000};
   for (int run = 0; run < 9; run++) {
@@ -294,8 +294,8 @@ int main() {
   }
   }
   univ1stream.close();
-  caida16stream.close();
-  caida18stream.close();
+//   caida16stream.close();
+//   caida18stream.close();
   return 0;
 }
 

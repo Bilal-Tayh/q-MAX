@@ -113,19 +113,19 @@ int main() {
   sizes.push_back(UNIV1_SIZE);
   datasets.push_back("univ1");
 
-  ofstream caida16stream;
-  setupOutputFile("../results/hh_caida.xxh.raw_res", caida16stream, false);
-  streams.push_back(&caida16stream);
-  getKeysFromFile("../datasets/CAIDA16/mergedIPID_Srcip", keys, CAIDA16_SIZE);
-  sizes.push_back(CAIDA16_SIZE);
-  datasets.push_back("caida");
-
-  ofstream caida18stream;
-  setupOutputFile("../results/hh_caida18.xxh.raw_res", caida18stream, false);
-  streams.push_back(&caida18stream);
-  getKeysFromFile("../datasets/CAIDA18/mergedIPID_Srcip", keys, CAIDA18_SIZE);
-  sizes.push_back(CAIDA18_SIZE);
-  datasets.push_back("caida18");
+//   ofstream caida16stream;
+//   setupOutputFile("../results/hh_caida.xxh.raw_res", caida16stream, false);
+//   streams.push_back(&caida16stream);
+//   getKeysFromFile("../datasets/CAIDA16/mergedIPID_Srcip", keys, CAIDA16_SIZE);
+//   sizes.push_back(CAIDA16_SIZE);
+//   datasets.push_back("caida");
+// 
+//   ofstream caida18stream;
+//   setupOutputFile("../results/hh_caida18.xxh.raw_res", caida18stream, false);
+//   streams.push_back(&caida18stream);
+//   getKeysFromFile("../datasets/CAIDA18/mergedIPID_Srcip", keys, CAIDA18_SIZE);
+//   sizes.push_back(CAIDA18_SIZE);
+//   datasets.push_back("caida18");
 
   list<unsigned int> chis = {10000000};
   for (int run = 0; run < 1; run++) {
@@ -150,8 +150,8 @@ int main() {
   }
   }
   univ1stream.close();
-  caida16stream.close();
-  caida18stream.close();
+//   caida16stream.close();
+//   caida18stream.close();
   return 0;
 }
 

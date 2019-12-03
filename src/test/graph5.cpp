@@ -95,7 +95,7 @@ void getKeysAndValsFromFile(string filename, vector<key*> &keys, vector<val*> &v
   if (!stream) {
     throw invalid_argument("Could not open " + filename + " for reading.");
   }
-
+   
   key* file_keys = (key*) malloc(sizeof(key) * size);
   val* file_vals = (val*) malloc(sizeof(val) * size);
 
@@ -124,12 +124,14 @@ void getKeysAndValsFromFile(string filename, vector<key*> &keys, vector<val*> &v
 }
 
 int main() {
+    
+    
+   
   vector<ofstream*> streams;
   vector<key*> keys;
   vector<val*> vals;
   vector<int> sizes;
   vector<string> datasets;
-
   ofstream univ1stream;
   setupOutputFile("../results/ps_univ1.raw_res", univ1stream, false);
   streams.push_back(&univ1stream);
@@ -137,19 +139,21 @@ int main() {
   sizes.push_back(UNIV1_SIZE);
   datasets.push_back("univ1");
 
-  ofstream caida16stream;
-  setupOutputFile("../results/ps_caida.raw_res", caida16stream, false);
-  streams.push_back(&caida16stream);
-  getKeysAndValsFromFile("../datasets/CAIDA16/mergedPktlen_Srcip", keys, vals, CAIDA16_SIZE);
-  sizes.push_back(CAIDA16_SIZE);
-  datasets.push_back("caida");
-
-  ofstream caida18stream;
-  setupOutputFile("../results/ps_caida18.raw_res", caida18stream, false);
-  streams.push_back(&caida18stream);
-  getKeysAndValsFromFile("../datasets/CAIDA18/mergedPktlen_Srcip", keys, vals, CAIDA18_SIZE);
-  sizes.push_back(CAIDA18_SIZE);
-  datasets.push_back("caida18");
+  
+//   ofstream caida16stream;
+//   setupOutputFile("../results/ps_caida.raw_res", caida16stream, false);
+//   streams.push_back(&caida16stream);
+//   getKeysAndValsFromFile("../datasets/CAIDA16/mergedPktlen_Srcip", keys, vals, CAIDA16_SIZE);
+//   sizes.push_back(CAIDA16_SIZE);
+//   datasets.push_back("caida");
+// 
+//   ofstream caida18stream;
+//   setupOutputFile("../results/ps_caida18.raw_res", caida18stream, false);
+//   streams.push_back(&caida18stream);
+//   getKeysAndValsFromFile("../datasets/CAIDA18/mergedPktlen_Srcip", keys, vals, CAIDA18_SIZE);
+//   sizes.push_back(CAIDA18_SIZE);
+//   datasets.push_back("caida18");
+  
 
   list<unsigned int> qs = {10000000, 1000000, 100000, 10000};
   for (int run = 0; run < 5; run++) {
@@ -163,8 +167,8 @@ int main() {
       val* v = *v_it;
       int size = *s_it;
       string dataset = *d_it;
-      benchmark_psheap(q, &k, &v, *stream, dataset, size);
-      benchmark_psskiplist(q, &k, &v, *stream, dataset, size);
+//       benchmark_psheap(q, &k, &v, *stream, dataset, size);
+//       benchmark_psskiplist(q, &k, &v, *stream, dataset, size);
       list<double> gammas = {0.5, 0.25, 0.1, 0.05};
       for (double g : gammas) {
         benchmark_psqmax(q, g, &k, &v, *stream, dataset, size);
@@ -177,8 +181,8 @@ int main() {
   }
   }
   univ1stream.close();
-  caida16stream.close();
-  caida18stream.close();
+//   caida16stream.close();
+//   caida18stream.close();
   return 0;
 }
 

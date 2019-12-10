@@ -87,6 +87,7 @@ void benchmark_psqmax(int q, double gamma, key** keys, val** vals, ofstream &ost
   ftime(&endtb);
   time = ((double)(endt-begint))/CLK_PER_SEC;
   ostream << dataset << ",AmortizedQMax," << numKeys << "," << q << "," << gamma << "," << time << endl;
+//   qmax.checkCorrectness();
 }
 
 void getKeysAndValsFromFile(string filename, vector<key*> &keys, vector<val*> &vals, int size) {
@@ -173,6 +174,8 @@ int main() {
       for (double g : gammas) {
         benchmark_psqmax(q, g, &k, &v, *stream, dataset, size);
       }
+      univ1stream.close();
+      return 0;
       ++k_it;
       ++v_it;
       ++s_it;

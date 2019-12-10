@@ -4,6 +4,16 @@
 #include <string.h>
 #include <iostream>
 #include <random>
+#include <stdlib.h>
+#include <chrono>
+#include <fstream>
+#include <assert.h>
+#include <time.h>
+#include <immintrin.h>
+#include <iomanip> 
+#include "RngFast.hpp"
+
+
 
 typedef unsigned long long key;
 typedef double val;
@@ -27,6 +37,17 @@ class QMaxKV
 	int _nminusq;
 	val _phi;
 	key _k_phi;
+    double _delta;
+    double _alpha;
+    double _psi;
+    int _k;
+    int _Z;
+    val * _B;
+    char * RandByteArray;
+    rng::rng128 gen_arr;
+    int counter;
+    int bitcounter;
+    
 	void maintenance();
     std::default_random_engine _generator;
 	inline void swap(int a, int b);
@@ -43,8 +64,8 @@ public:
 	val getMinimalVal();
 	key getMinimalKey();
     int findValueIndex(val value);
-    int checkPivot(val value, double psi);
-    int GenerateRandom(int min,int max);
+    int checkPivot(val value);
+    int GenerateRandom(int max);
 };
 
 #endif

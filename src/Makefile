@@ -1,12 +1,15 @@
 CC = g++
-FLAGS = -std=c++11
-DEBUG_FLAGS =
+FLAGS = -mavx -std=c++11
+DEBUG_FLAGS = 
 EXEC = graph34 graph5 graph6 graph7 graph8 graph9-in graph10 graph11 hitrate
 # EXEC = graph5 
 REG_OBJ = Heap.o Qmax.o Skiplist.o
 KV_OBJ = HeapKV.o QmaxKV.o SkiplistKV.o
 PBA_OBJ = QmaxIn.o HeapIn.o SkiplistIn.o
 OBJS = xxhash.o $(REG_OBJ) $(KV_OBJ) $(PBA_OBJ) SlidingQmax.o
+
+
+
 
 all: $(OBJS) $(EXEC)
 	

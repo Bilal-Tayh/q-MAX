@@ -9,6 +9,7 @@
 #include <sys/timeb.h>
 
 #include "../Qmax.hpp"
+#include "../QmaxO.hpp"
 #include "../Heap.hpp"
 #include "../Skiplist.hpp"
 #include "Utils.hpp"
@@ -69,6 +70,24 @@ void benchmark_qmax(int q, double gamma, int** data, ofstream &ostream) {
   ostream << "random,AmortizedQMax," << N << "," << q << "," << gamma << "," << time << endl;
 }
 
+
+void benchmark_qmaxo(int q, double gamma, int** data, ofstream &ostream) {
+  int* elements = *data;
+  struct timeb begintb, endtb;
+  clock_t begint, endt;
+  double time;
+  QMaxO qmaxo(q, gamma);
+  begint = clock();
+  ftime(&begintb);
+  for (int i = 0; i < N; i++) {
+    qmaxo.insert(elements[i]);
+  }
+  endt = clock();
+  ftime(&endtb);
+  time = ((double)(endt-begint))/CLK_PER_SEC;
+  ostream << "random,AmortizedQMaxOld," << N << "," << q << "," << gamma << "," << time << endl;
+}
+
 int main() {
   ofstream ostream;
   setupOutputFile("../results/timing_random.raw_res", ostream, false);
@@ -84,6 +103,7 @@ int main() {
       list<double> gammas = {0.025};
       for (double g : gammas) {
         benchmark_qmax(q, g, &data, ostream);
+        benchmark_qmaxo(q, g, &data, ostream);
       }
     }
   }

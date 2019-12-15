@@ -1,5 +1,5 @@
-#ifndef QMAX_H
-#define QMAX_H
+#ifndef QMAXO_H
+#define QMAXO_H
 #include <fstream>
 #include <assert.h>
 #include <time.h>
@@ -7,7 +7,7 @@
 #include <iomanip> 
 #include "RngFast.hpp"
 
-class QMax
+class QMaxO
 {
 	int *_A;
 	int _curIdx;
@@ -33,7 +33,7 @@ class QMax
 public:
 	void reset();
 	int findKthLargestAndPivot();
-	QMax(int q, float gamma);
+	QMaxO(int q, float gamma);
 	void insert(int id);
 	int* largestQ();
 	void print();
